@@ -1,0 +1,498 @@
+#include<iostream>
+using namespace std;
+class Result2;
+class Result1
+{
+    public:
+    int marks;
+    void getData()
+    {
+        cout<<"Enter marks for subject:";
+        cin>>marks;
+    }
+    int data()
+    {
+        return marks;
+    }
+
+};
+class Result2
+{
+    public:
+    int marks;
+    void accept()
+    {
+        cout<<"Enter marks for subject:";
+        cin>>marks;
+    }
+    int data()
+    {
+        return marks;
+    }
+};
+
+int main()
+{
+    Result1 obj1;
+    Result2 obj2;
+    obj1.getData();
+    obj2.accept();
+    float avg= (obj1.data()+obj2.data())/2.0;
+    cout<<"Average marks: "<<avg;
+    return 0;
+}
+#include<iostream>
+using namespace std;
+class Greatest2;
+class Greatest
+{
+    public:
+    int a;
+    void getdata()
+    {
+        cout<<"Enter the first number:";
+        cin>>a;
+    }
+    friend void compare(Greatest &a, Greatest2 &b);
+};
+class Greatest2
+{
+    public:
+    int b;
+    void accept()
+    {
+        cout<<"Enter the second number:";
+        cin>>b;
+    }
+    friend void compare(Greatest &n1, Greatest2 &n2);
+};
+void compare(Greatest &n1, Greatest2 &n2)
+{
+    if(n1.a > n2.b)
+        cout<<"The greatest number is: "<<n1.a;
+    else
+        cout<<"The greatest number is: "<<n2.b;
+}
+int main()
+{
+    Greatest obj1;
+    Greatest2 obj2;
+    obj1.getdata();
+    obj2.accept();
+    compare(obj1, obj2);
+}
+#include <iostream>
+using namespace std;
+
+class Swapping
+{
+private:
+    int value;
+
+public:
+    void getData()
+    {
+        cout << "Enter a number: ";
+        cin >> value;
+    }
+
+    void display()
+    {
+        cout << value << endl;
+    }
+
+    friend void swapValues(Swapping &x, Swapping &y);
+};
+
+void swapValues(Swapping &n1, Swapping &n2)
+{
+    int temp = n1.value;
+    n1.value = n2.value;
+    n2.value = temp;
+}
+
+int main()
+{
+    Swapping obj1, obj2;
+    obj1.getData();
+    obj2.getData();
+
+    swapValues(obj1, obj2);
+
+    cout << "After swapping:\n";
+    obj1.display();
+    obj2.display();
+
+    return 0;
+}
+#include <iostream>
+using namespace std;
+
+class Number {
+    int value;
+
+public:
+   
+    Number(int v = 0) {
+        value = v;
+    }
+
+    
+    void display() {
+        cout << value << endl;
+    }
+
+   
+    void swap(Number &obj) {
+        int temp = value;
+        value = obj.value;
+        obj.value = temp;
+    }
+};
+
+int main() {
+    Number n1(10), n2(20);
+
+    cout << "Before Swap:" << endl;
+    cout << "n1 = "; n1.display();
+    cout << "n2 = "; n2.display();
+
+   
+    n1.swap(n2);
+
+    cout << "\nAfter Swap:" << endl;
+    cout << "n1 = "; n1.display();
+    cout << "n2 = "; n2.display();
+
+    return 0;
+}
+
+#include<iostream>
+using namespace std;
+class B;
+class A
+{
+    private:
+    int a=5;
+    friend class B;
+    friend int sum(A&, B&);
+};
+class B
+{
+    private:
+    int b=10;
+    friend class A;
+    friend int sum(A&, B&);
+};
+int sum(A& objA, B& objB)
+{
+    return objA.a + objB.b;
+}
+int main()
+{
+    A objA;
+    B objB;
+    cout<<"The sum of two numbers is:"<<sum(objA , objB);
+    return 0;
+}
+#include<iostream>
+using namespace std;
+class Number
+{
+    private:
+    int a=5;
+    int b=10;
+    friend void swap(Number& , Number&);
+    friend void display(Number& ,Number&);
+};
+void swap(Number& obj1, Number& obj2)
+{
+    int temp;
+    temp = obj1.a;
+    obj1.a=obj2.b;
+    obj2.b=temp;
+}
+void display(Number& obj1,Number& obj2)
+{
+    cout << "a: " << obj1.a << ", b: " << obj2.b << endl;
+
+}
+
+int main()
+{
+    Number obj1,obj2;
+    cout<<"Before swapping:"<<endl;
+    display(obj1,obj2);
+    swap(obj1,obj2);
+    cout<<"After swapping:"<<endl;
+    display(obj1, obj2);
+    return 0;
+}
+#include<iostream>
+using namespace std;
+class Cube;
+class Box
+{
+    private:
+    int box_volume=500;
+    friend class Cube;
+    friend void displayVolume(Box&, Cube&);
+};
+class Cube
+{
+    private:
+    int cube_volume=1000;
+    friend class Box;
+    friend void displayVolume(Box&, Cube&);
+};
+void displayVolume(Box& a , Cube& b)
+{
+    if (a.box_volume > b.cube_volume)
+    {
+        cout<<"Box has larger volume:"<<a.box_volume<<endl;
+    }
+    else
+    {
+        cout<<"Cube has larger volume:"<<b.cube_volume<<endl;
+    }
+    
+}
+int main()
+{
+    Box obj1;
+    Cube obj2;
+    displayVolume(obj1, obj2);
+    return 0;
+}
+#include<iostream>
+using namespace std;
+class Complex
+{
+    private:
+    int real;
+    int imag;
+    friend void addComplex(Complex&, Complex&);
+    public:
+    void takeInputs()
+    {
+        cout<<"Enter real part:";
+        cin>>real;
+        cout<<"Enter imaginary part:";
+        cin>>imag;
+    }
+};
+void addComplex(Complex& c1, Complex& c2)
+{
+    int total_real=0,total_imag=0;
+    total_real=c1.real + c2.real;
+    total_imag=c1.imag + c2.imag;
+    cout<<"Sum of Complex Numbers: "<<total_real<<" + "<<total_imag<<"i"<<endl;
+}
+int main()
+{
+    Complex c1,c2;
+    c1.takeInputs();
+    c2.takeInputs();
+    addComplex(c1,c2);
+    return 0;
+}
+#include<iostream>
+#include<string>
+using namespace std;
+class Student
+{
+    private:
+    string name="Aditya";
+    int s1=82,s2=56,s3=95;
+    friend void calculateAverage(Student&);
+};
+void calculateAverage(Student& obj)
+{
+    float average;
+    average=(obj.s1+obj.s2+obj.s3)/3.0;
+    cout<<"Average: "<<average<<endl;
+}
+int main()
+{
+    Student obj;
+    calculateAverage(obj);
+    return 0;
+}
+#include<iostream>
+using namespace std;
+class Beta;
+class Gamma;
+class Alpha
+{
+    private:
+    int a=5;
+    friend class Beta;
+    friend class Gamma;
+    friend int sum(Alpha&, Beta&, Gamma&);
+};
+class Beta
+{
+    private:
+    int b=10;
+    friend class Alpha;
+    friend class Gamma;
+    friend int sum(Alpha&, Beta&, Gamma&);
+};
+
+class Gamma
+{
+    private:
+    int c=15;
+    friend class Alpha;
+    friend class Beta;
+    friend int sum(Alpha&, Beta&, Gamma&);
+};
+int sum(Alpha& obj1, Beta& obj2, Gamma& obj3)
+{
+    return obj1.a+obj2.b+obj3.c;
+}
+int main()
+{
+    Alpha obj1;
+    Beta obj2;
+    Gamma obj3;
+    cout << "Sum: " << sum(obj1, obj2, obj3) << endl;
+    return 0;
+}
+#include<iostream>
+#include<math.h>
+using namespace std;
+class Point
+{
+    private:
+    int x,y;
+    friend int calculateDistance(Point&, Point&);
+    public:
+    void acceptData()
+    {
+        cout<<"Enter value of 'x': ";
+        cin>>x;
+        cout<<"Enter value of 'y': ";
+        cin>>y;
+    }
+};
+int calculateDistance(Point& p1, Point& p2)
+{
+    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+};
+int main()
+{
+    Point p1,p2;
+    cout<<"Point 1:"<<endl;
+    p1.acceptData();
+    cout<<"Point 2:"<<endl;
+    p2.acceptData();  
+    cout<<"The distance between two points is:"<<calculateDistance(p1,p2);
+    return 0;
+}
+#include<iostream>
+#include<string>
+using namespace std;
+class Audit;
+class BankAccount
+{
+    private:
+    string name="Aditya Manake";
+    string accountnumber="A124XX9012";
+    float balance=11024.85;
+    friend class Audit;
+};
+class Audit
+{
+    public:
+    void showAccountDetails(BankAccount account)
+    {
+        cout<<"Account holder name:"<<account.name<<endl;
+        cout << "Account Number: " << account.accountnumber << endl;
+        cout << "Balance: " << account.balance <<" Rs" << endl;
+    }
+};
+int main()
+{
+    BankAccount obj;
+    Audit audit;
+    audit.showAccountDetails(obj);
+    return 0;
+}
+#include<iostream>
+using namespace std;
+class CollegeStudent
+{
+    protected:
+    int stud_id,college_id;
+    public:
+    void inputStud()
+    {
+        cout<<"Enter student ID: ";
+        cin>>stud_id;
+        cout<<"Enter college ID: ";
+        cin>>college_id;
+    }
+    void displayStud()
+    {
+        cout<<"Student ID: "<<stud_id<<endl;
+        cout<<"College ID: "<<college_id<<endl;
+    }
+};
+class Test: virtual public CollegeStudent
+{
+    protected:
+    int marks1,marks2;
+    public:
+    void inputTest()
+    {
+        cout<<"Enter marks of subject 1: ";
+        cin>>marks1;
+        cout<<"Enter marks of subject 2: ";
+        cin>>marks2;
+    }
+    void displayTest()
+    {
+        cout<<"Marks of subject 1: "<<marks1<<endl;
+        cout<<"Marks of subject 2: "<<marks2<<endl;
+    }
+};
+class Sports: virtual public CollegeStudent
+{
+    protected:
+    int score;
+    public:
+    void inputSports()
+    {
+        cout<<"Enter sports score: ";
+        cin>>score;
+    }
+    void displaySports()
+    {
+        cout<<"Sports score: "<<score<<endl;
+    }
+};
+class Result : public Test, public Sports
+{
+    public:
+    int input()
+    {
+        inputStud();
+        inputTest();
+        inputSports();
+    }
+    void display()
+    {
+        displayStud();
+        displayTest();
+        displaySports();
+        cout<<"Total marks: "<<marks1+marks2+score<<endl;
+    }
+};
+int main()
+{
+    Result r;
+    r.input();
+    r.display();
+    return 0;
+}
