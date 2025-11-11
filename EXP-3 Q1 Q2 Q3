@@ -1,0 +1,124 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Book
+{
+    private:
+    string title;
+    string author;
+    float price;
+    public:
+    void getData()
+    {
+        cout << "Enter book title: ";
+        getline(cin, title);
+        cout << "Enter book author: ";
+        getline(cin, author);
+        cout << "Enter book price: ";
+        cin >> price;
+        cin.ignore();  
+    }
+    void displayData()
+    {
+        cout << "Book Title: " << title << endl;
+        cout << "Book Author: " << author << endl;
+        cout << "Book Price: " << price << " Rs" << endl;
+    }
+};
+int main()
+{
+    Book b1;
+    Book *ptr;
+    ptr = &b1;
+    cout << "Enter details of the book:" << endl;
+    ptr->getData();
+    cout << "Details of the book:" << endl;
+    ptr->displayData();
+    return 0;
+
+}
+#include<iostream>
+#include<string>
+using namespace std;
+class Student
+{
+    private:
+    string name;
+    int rollno;
+    float percentage;
+    public:
+    void getData()
+    {
+        cout<<"Enter student name: ";
+        getline(cin,this->name);
+        cout<<"Enter student roll number: ";
+        cin>>this->rollno;
+        cout<<"Enter student percentage: ";
+        cin>>this->percentage;
+        cin.ignore();
+    }
+    void displayData()
+    {
+        this->getData();
+        cout<<"Student Details:"<<endl;
+        cout<<"Student Name: "<<this->name<<endl;
+        cout<<"Roll Number: "<<this->rollno<<endl;
+        cout<<"Percentage: "<<this->percentage<<"%"<<endl;
+    }
+};
+int main()
+{
+    Student s1;
+    s1.displayData();
+    return 0;
+}
+#include<iostream>
+#include<string>
+using namespace std;
+class Student
+{
+   public:
+   string name;
+   int rollno;
+   void getData()
+   {
+       cout << "Enter student name: ";
+       getline(cin,name);
+       cout << "Enter student roll number: ";
+       cin >> rollno;
+       cin.ignore();
+   }
+   void displayData()
+   {
+       cout << "Student Name: " << name << endl;
+       cout << "Student Roll Number: " << rollno << endl;
+   }
+   class Marks
+   {
+        public:
+        int m1,m2;
+        void getMarks()
+        {
+            Student obj1;
+            obj1.getData();
+            cout << "Enter marks of OOP : ";
+            cin >> m1;
+            cout << "Enter marks of ADS: ";
+            cin >> m2;
+        }
+        void displayMarks()
+        {
+            Student obj1;
+            obj1.displayData();
+            cout << "Marks in OOP: " << m1 << endl;
+            cout << "Marks in ADS: " << m2 << endl;
+        }
+   };
+};
+int main()
+{
+    Student::Marks obj2;
+    obj2.getMarks();
+    obj2.displayMarks();
+    return 0;
+}
