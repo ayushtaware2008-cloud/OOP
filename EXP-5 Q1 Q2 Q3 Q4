@@ -1,0 +1,113 @@
+#include<iostream>
+using namespace std;
+class Sum
+{
+    int n,sum;
+    public:
+    Sum(int num)
+    {
+        n=num;
+        sum=0;
+        for(int i=0;i<n;i++)
+        {
+            sum+=i;
+        }
+        cout<<"Sum="<<sum;
+    }
+};
+int main()
+{
+    Sum s(10);
+    return 0;
+}
+#include<iostream>
+#include<string>
+using namespace std;
+class Student
+{
+    private:
+    string name;
+    float percentage;
+    public:
+    Student(string n, float p)
+    {
+        name=n;
+        percentage=p;
+        cout<<"Name:";
+        getline(cin,name);
+        cout<<"Percentage:";
+        cin>>percentage;
+    }
+    void display()
+    {
+        cout<<"Student name:"<<name<<endl;
+        cout<<"Student percentage:"<<percentage<<endl;
+    }
+
+};
+int main()
+{
+    Student s1("Aditya",85.5);
+    s1.display();
+    return 0;
+}
+#include<iostream>
+#include<string>
+using namespace std;
+class College
+{
+    private:
+    string course_name,stud_name;
+    int roll_no;
+    public:
+    College()
+    {
+        roll_no=57;
+        stud_name="Aditya";
+        course_name="CSE-AIDS";
+    }
+    void display()
+    {
+        cout<<"Roll no:"<<roll_no<<endl;
+        cout<<"Student name:"<<stud_name<<endl;
+        cout<<"Course name:"<<course_name<<endl;
+    }
+};
+int main()
+{
+    College c1;
+    c1.display();
+    return 0;
+}
+#include<iostream>
+using namespace std;
+class Demo
+{
+    int x;
+    public:
+    Demo()
+    {
+        x=5;
+        cout<<"Default constructor called"<<endl;
+        cout<<"x="<<x<<endl;
+    }
+    Demo(int x1)
+    {
+        x=x1;
+        cout<<"Parameterized constructor called"<<endl;
+        cout<<"x="<<x<<endl;
+    }
+    Demo(int x1,int y1)
+    {
+        x=x1+y1;
+        cout<<"Parameterized constructor with two parameters called"<<endl;
+        cout<<"x="<<x<<endl;
+    }
+};
+int main()
+{
+    Demo d1;
+    Demo d2(10);
+    Demo d3(10,20);
+    return 0;
+}
