@@ -1,0 +1,122 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class City
+{
+    public:
+    string name;
+    
+    int population;
+    void acceptData()
+    {
+        cout<<"Enter city name: ";
+        getline(cin , name);
+        cout<<"Enter population: ";
+        cin>>population;
+        cin.ignore();
+    }
+};
+int main()
+{
+    City obj[5];
+    int i,maxindex;
+    int max=obj[0].population;
+    for(i=0;i<5;i++)
+    {
+        cout<<"Enter data for city "<<i+1<<":"<<endl;
+        obj[i].acceptData();
+    }
+    for ( i = 0; i < 5; i++)
+    {
+        if(obj[i].population > max)
+        {
+            max=obj[i].population;
+            maxindex=i;
+        }
+    }
+    cout<<"City with maximum population is:"<<obj[maxindex].name<<endl;
+    cout<<"Maximum population is: "<<max<<endl;
+    return 0;
+}
+#include <iostream>
+using namespace std;
+class Accounts
+{
+public:
+    int accountNumber;
+    float balance;
+    void acceptDetails()
+    {
+        cout << "Enter account number: ";
+        cin >> accountNumber;
+        cout << "Enter balance: ";
+        cin >> balance;
+    }
+};
+int main()
+{
+    Accounts obj[10];
+    int i;
+    float interest;
+    for (i = 0; i < 10; i++)
+    {
+        cout << "Enter details for account " << i + 1 << endl;
+        obj[i].acceptDetails();
+    }
+    for (i = 0; i < 10; i++)
+    {
+        if (obj[i].balance >= 5000)
+        {
+            interest = obj[i].balance * 0.10;
+            obj[i].balance+=interest;
+            cout << "Interested amount for account " << obj[i].accountNumber << " is: " << obj[i].balance << endl;
+        }
+    }
+    return 0;
+}
+#include<iostream>
+#include<string>
+using namespace std;
+class Staff
+{
+   public:
+   string name;
+   string post;
+   void getData()
+   {
+       cout << "Enter staff name: ";
+       getline(cin, name);
+       cout << "Enter staff post: ";
+       cin >> post;
+       cin.ignore();  
+   }
+   void displayData()
+   {
+       cout << "Staff Name: " << name << endl;
+       cout << "Staff post: " << post << endl;
+   }
+};
+int main()
+{
+    Staff s1[5];
+    for(int i = 0; i < 5; i++)
+    {
+        cout << "Enter details for staff member " << (i + 1) << ":" << endl;
+        s1[i].getData();
+    }
+    for(int i = 0; i < 5; i++)
+    {
+       if (s1[i].post == "HOD" || s1[i].post == "hod")
+       {
+           cout << "Details of staff member " << (i + 1) << ":" << endl;
+           s1[i].displayData();
+            break;
+       }
+       else
+       {
+         cout << "No HOD found in the list." << endl;
+       }
+       
+    }
+    return 0;
+}
