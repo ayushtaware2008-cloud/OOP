@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+//#include<stack>
+using namespace std;
+int main()
+{
+    stack<string>cars;
+    cars.push("BMW");
+    cars.push("Audi");
+    cars.push("Mercedes");
+    cars.push("Ferrari");
+    cout<<"Top element is: "<<cars.top()<<endl;
+    cout<<"Size of stack is: "<<cars.size()<<endl;
+    cars.pop();
+    cars.pop();
+    while(!cars.empty())
+    {
+        cout<<"Elements in stack are:"<<cars.top()<<endl;
+        cars.pop(); 
+    }
+    return 0;
+}
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    queue<int>age;
+    age.push(21);
+    age.push(22);   
+    age.push(23);
+    age.push(24);
+    cout<<"Front element is: "<<age.front()<<endl;
+    cout<<"Back element is: "<<age.back()<<endl;
+    age.pop();
+    age.pop();
+    while(!age.empty())
+    {
+        cout<<"Elements in queue are:"<<age.front()<<endl;
+        age.pop();
+    }
+    return 0;
+}
